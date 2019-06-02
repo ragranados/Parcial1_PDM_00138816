@@ -17,18 +17,19 @@
             android:text="@string/nuevo_partido" />
 
         <EditText
-            android:id="@+id/nombre_aquipo_uno"
+            android:id="@+id/nombre_equipo_uno"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/nombre_equipo_1" />
 
         <EditText
-            android:id="@+id/nombre_aquipo_dos"
+            android:id="@+id/nombre_equipo_dos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/nombre_equipo_2" />
 
         <Button
+            android:id="@+id/boton_crear_partido"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Crear" />
