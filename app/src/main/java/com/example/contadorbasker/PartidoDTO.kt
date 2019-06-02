@@ -4,12 +4,12 @@ import android.os.Parcel
 import android.os.Parcelable
 
 class PartidoDTO(
-        val equipoUno: String= "N/A",
-        val equipoDos: String = "N/A",
-        val puntajeEquipoUno: String = "N/A",
-        val puntajeEquipoDos: String = "N/A",
-        val fecha: String = "N/A"
-): Parcelable {
+        var equipoUno: String = "N/A",
+        var equipoDos: String = "N/A",
+        var puntajeEquipoUno: String = "N/A",
+        var puntajeEquipoDos: String = "N/A",
+        var fecha: String = "N/A"
+) : Parcelable {
     constructor(parcel: Parcel) : this(
             parcel.readString(),
             parcel.readString(),
