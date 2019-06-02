@@ -33,7 +33,7 @@ class New_match : AppCompatActivity() {
 
     companion object {
         const val NOMBRE_EQUIPO_UNO = "nombre_quipo_uno"
-        const val NOMBRE_WQUIPO_DOS = "nombre+equipo_2"
+        const val NOMBRE_WQUIPO_DOS = "nombre_equipo_2"
     }
 
 }
