@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="titulo">35dp</dimen>
+    <dimen name="textos">30dp</dimen>
+    <dimen name="general_padding">40dp</dimen>
+    <dimen name="subtitittle">25dp</dimen>
+</resources>

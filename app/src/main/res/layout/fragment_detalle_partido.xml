@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="40dp"
             android:textColor="@color/color_texto"
-            android:textSize="35dp" />
+            android:textSize="@dimen/titulo" />
 
         <TextView
             android:id="@+id/puntaje_equipo_uno"
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="10dp"
             android:textColor="@color/color_texto"
-            android:textSize="30dp" />
+            android:textSize="@dimen/textos" />
 
 
         <TextView

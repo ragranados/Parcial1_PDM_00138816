@@ -37,6 +37,8 @@ class MatchCounter : AppCompatActivity() {
                 partido.fecha = it.getString(New_match.FECHA)
                 equipo_uno.text = partido.equipoUno
                 equipo_dos.text = partido.equipoDos
+
+                titulo_partido.text = partido.equipoUno + " vs " + partido.equipoDos
             }
         }
     }

@@ -6,19 +6,20 @@
     android:layout_height="match_parent"
     android:background="@color/back_ground"
     android:orientation="vertical"
-    android:padding="40dp"
+    android:padding="30dp"
     tools:context=".activitys.MatchCounter">
 
 
     <LinearLayout
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="0dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center">
 
         <TextView
+
             android:textColor="@color/color_texto"
-            android:textSize="@dimen/titulo"
+            android:textSize="0dp"
             android:id="@+id/titulo_partido"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -69,7 +70,7 @@
 
                 <Button
                     android:textColor="@color/color_texto"
-                    android:layout_marginVertical="15dp"
+                    android:layout_marginVertical="8dp"
                     android:id="@+id/bAgregarDosEUno"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -128,7 +129,7 @@
 
                 <Button
                     android:textColor="@color/color_texto"
-                    android:layout_marginVertical="15dp"
+                    android:layout_marginVertical="8dp"
                     android:id="@+id/bAgregarDosEDos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
