@@ -7,14 +7,19 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.contadorbasker.activitys.ActividadDetallePartido
 import com.example.contadorbasker.activitys.MatchCounter
 import com.example.contadorbasker.adapters.PartidoAdapter
+import com.example.contadorbasker.database.entitys.Partido
 import com.example.contadorbasker.fragments.DetallePartido
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var partidoViewModel: PartidoViewModel
+
     var partidos = ArrayList<PartidoDTO>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,10 +27,36 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         Log.d("xdd", "caca")
 
+        partidoViewModel = ViewModelProviders.of(this).get(PartidoViewModel::class.java)
+
+        //val partidooo: LiveData<List<Partido>>
+
+        val partidooo: LiveData<List<Partido>> = partidoViewModel.partidos
+
+        val librosObserver = Observer<List<Partido>> { partido ->
+            partidos = getPartidosDTO(partidoViewModel?.partidos?.value)
+            setUpView()
+        }
+
+        partidooo.observeForever(librosObserver)
+
         boton_nuevo_partido.setOnClickListener {
             startActivityForResult(Intent(this@MainActivity, MatchCounter::class.java), codigoDatosPartido)
         }
 
+    }
+
+    fun getPartidosDTO(partidos: List<Partido>?): ArrayList<PartidoDTO> {
+        var partidosDTO = ArrayList<PartidoDTO>()
+
+        if (partidos != null) {
+            for (i in partidos) {
+                Log.d("prueba", i.fecha)
+                partidosDTO.add(PartidoDTO(i.equipoUno, i.equipoDos, i.puntajeEquipoUno, i.puntajeEquipoDos, i.fecha))
+            }
+        }
+
+        return partidosDTO
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -33,12 +64,14 @@ class MainActivity : AppCompatActivity() {
 
         if (requestCode == MatchCounter.codigoNuevoPartido && resultCode == Activity.RESULT_OK) {
             data?.extras?.let {
-                partidos.add(it.getParcelable(MatchCounter.DATOS_PARTIDO))
+                val p: PartidoDTO = it.getParcelable(MatchCounter.DATOS_PARTIDO)
 
+                //partidos.add(it.getParcelable(MatchCounter.DATOS_PARTIDO))
+
+                partidoViewModel.insert(Partido(p.equipoUno, p.equipoDos, p.puntajeEquipoUno, p.puntajeEquipoDos, p.fecha))
                 setUpView()
             }
         }
-
 
     }
 
