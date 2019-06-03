@@ -19,8 +19,6 @@ class New_match : AppCompatActivity() {
         setContentView(R.layout.activity_new_match)
 
         boton_crear_partido.setOnClickListener { replyToIntent() }
-
-
     }
 
     fun replyToIntent() {

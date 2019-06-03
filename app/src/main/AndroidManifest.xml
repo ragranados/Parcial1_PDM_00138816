@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".activitys.ActividadDetallePartido"></activity>
         <activity android:name=".activitys.New_match" />
-        <activity android:name=".activitys.Match_counter" />
+        <activity android:name=".activitys.MatchCounter" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

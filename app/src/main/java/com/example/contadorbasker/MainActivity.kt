@@ -2,13 +2,16 @@ package com.example.contadorbasker
 
 import android.app.Activity
 import android.content.Intent
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.contadorbasker.activitys.ActividadDetallePartido
-import com.example.contadorbasker.activitys.Match_counter
+import com.example.contadorbasker.activitys.MatchCounter
 import com.example.contadorbasker.adapters.PartidoAdapter
+import com.example.contadorbasker.fragments.DetallePartido
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -17,10 +20,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Log.d("xdd","caca")
+        Log.d("xdd", "caca")
 
         boton_nuevo_partido.setOnClickListener {
-            startActivityForResult(Intent(this@MainActivity, Match_counter::class.java), codigoDatosPartido)
+            startActivityForResult(Intent(this@MainActivity, MatchCounter::class.java), codigoDatosPartido)
         }
 
     }
@@ -28,9 +31,9 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == Match_counter.codigoNuevoPartido && resultCode == Activity.RESULT_OK) {
+        if (requestCode == MatchCounter.codigoNuevoPartido && resultCode == Activity.RESULT_OK) {
             data?.extras?.let {
-                partidos.add(it.getParcelable(Match_counter.DATOS_PARTIDO))
+                partidos.add(it.getParcelable(MatchCounter.DATOS_PARTIDO))
 
                 setUpView()
             }
@@ -42,10 +45,15 @@ class MainActivity : AppCompatActivity() {
     fun itemClickedPortrait(partido: PartidoDTO) {
         val infoPartido = Bundle()
 
-        infoPartido.putParcelable("partido",partido)
+        infoPartido.putParcelable("partido", partido)
 
         startActivity(Intent(this, ActividadDetallePartido::class.java).putExtras(infoPartido))
 
+    }
+
+    fun itemClickedLandScape(partido: PartidoDTO) {
+        var contentFragment: DetallePartido = DetallePartido.newInstance(partido)
+        changeFragment(R.id.land_detalle_partido, contentFragment)
     }
 
     fun setUpView() {
@@ -53,19 +61,17 @@ class MainActivity : AppCompatActivity() {
         lateinit var viewAdapter: PartidoAdapter
 
 
-        /*if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            viewAdapter = BookAdapter(this, { bookItem: LibroDTO -> itemClickedPortrait(bookItem) })
+        if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            viewAdapter = PartidoAdapter(this, { partidoItem: PartidoDTO -> itemClickedPortrait(partidoItem) })
         } else {
-            var contentFragment: BookDetailFragment = BookDetailFragment.newInstance(LibroDTO())
-            viewAdapter = BookAdapter(this, { bookItem: LibroDTO -> itemClickedLandScape(bookItem) })
-            changeFragment(R.id.land_book_detail, contentFragment)
-        }*/
 
-        viewAdapter = PartidoAdapter(this, { partidoItem: PartidoDTO -> itemClickedPortrait(partidoItem) })
+            viewAdapter = PartidoAdapter(this, { bookItem: PartidoDTO -> itemClickedLandScape(bookItem) })
+
+        }
 
         viewAdapter.setPartidos(partidos)
 
-        partidos.forEach {partido ->
+        partidos.forEach { partido ->
             Log.d("partidos", partido.equipoDos)
         }
 
@@ -74,6 +80,10 @@ class MainActivity : AppCompatActivity() {
             layoutManager = viewManager
             adapter = viewAdapter
         }
+    }
+
+    private fun changeFragment(id: Int, frag: Fragment) {
+        supportFragmentManager.beginTransaction().replace(id, frag).commit()
     }
 
     companion object {

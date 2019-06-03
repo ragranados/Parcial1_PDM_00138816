@@ -4,13 +4,11 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.example.contadorbasker.PartidoDTO
 import com.example.contadorbasker.R
 import kotlinx.android.synthetic.main.activity_match_counter.*
-import kotlinx.android.synthetic.main.activity_new_match.*
 
-class Match_counter : AppCompatActivity() {
+class MatchCounter : AppCompatActivity() {
     var partido = PartidoDTO()
     var puntajeEquipoUno: Int = 0
     var puntajeEquipoDos: Int = 0
@@ -20,7 +18,7 @@ class Match_counter : AppCompatActivity() {
         setContentView(R.layout.activity_match_counter)
 
 
-        val intent = Intent(this@Match_counter, New_match::class.java)
+        val intent = Intent(this@MatchCounter, New_match::class.java)
 
         startActivityForResult(intent, codigoNuevoPartido)
         agregarClickListeners()
@@ -37,6 +35,8 @@ class Match_counter : AppCompatActivity() {
                 partido.equipoUno = it.getString(New_match.NOMBRE_EQUIPO_UNO)
                 partido.equipoDos = it.getString(New_match.NOMBRE_WQUIPO_DOS)
                 partido.fecha = it.getString(New_match.FECHA)
+                equipo_uno.text = partido.equipoUno
+                equipo_dos.text = partido.equipoDos
             }
         }
     }
