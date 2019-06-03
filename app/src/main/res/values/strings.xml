@@ -3,4 +3,7 @@
     <string name="nombre_equipo_1">Nombre equipo 1</string>
     <string name="nombre_equipo_2">Nombre equipo 2</string>
     <string name="nuevo_partido">Nuevo Partido</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

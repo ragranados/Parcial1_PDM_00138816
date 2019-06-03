@@ -9,8 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activitys.New_match"></activity>
-        <activity android:name=".activitys.Match_counter"></activity>
+        <activity android:name=".activitys.ActividadDetallePartido"></activity>
+        <activity android:name=".activitys.New_match" />
+        <activity android:name=".activitys.Match_counter" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

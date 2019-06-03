@@ -2,11 +2,11 @@ package com.example.contadorbasker
 
 import android.app.Activity
 import android.content.Intent
-import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.contadorbasker.activitys.ActividadDetallePartido
 import com.example.contadorbasker.activitys.Match_counter
 import com.example.contadorbasker.adapters.PartidoAdapter
 import kotlinx.android.synthetic.main.activity_main.*
@@ -39,7 +39,12 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun itemClickedPortrait(partidos: PartidoDTO) {
+    fun itemClickedPortrait(partido: PartidoDTO) {
+        val infoPartido = Bundle()
+
+        infoPartido.putParcelable("partido",partido)
+
+        startActivity(Intent(this, ActividadDetallePartido::class.java).putExtras(infoPartido))
 
     }
 
