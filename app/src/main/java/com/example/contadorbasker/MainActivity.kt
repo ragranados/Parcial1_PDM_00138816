@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
         partidoViewModel = ViewModelProviders.of(this).get(PartidoViewModel::class.java)
 
-        //val partidooo: LiveData<List<Partido>>
+
 
         val partidooo: LiveData<List<Partido>> = partidoViewModel.partidos
 
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         partidooo.observeForever(librosObserver)
 
-        boton_nuevo_partido.setOnClickListener {
+        fab.setOnClickListener {
             startActivityForResult(Intent(this@MainActivity, MatchCounter::class.java), codigoDatosPartido)
         }
 

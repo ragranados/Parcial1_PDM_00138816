@@ -13,10 +13,10 @@
             android:id="@+id/item_view_partido"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="#9d9d9d"
+            android:background="@color/item"
             android:gravity="center"
             android:textColor="@color/color_texto"
-            android:textSize="35dp" />
+            android:textSize="23dp" />
 
     </LinearLayout>
 

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/back_ground"
     android:orientation="vertical"
     android:padding="40dp"
     tools:context=".activitys.MatchCounter">
@@ -22,6 +23,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:layout_marginRight="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -54,25 +56,32 @@
                     android:id="@+id/bAgregarUnoEUno"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/item"
                     android:text="Add 1" />
 
                 <Button
+                    android:layout_marginVertical="15dp"
                     android:id="@+id/bAgregarDosEUno"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/item"
                     android:text="Add 2" />
 
                 <Button
                     android:id="@+id/bAgregarTresEUno"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/item"
                     android:text="Add 3" />
 
             </LinearLayout>
 
         </LinearLayout>
 
+
+
         <LinearLayout
+            android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -100,18 +109,22 @@
                     android:id="@+id/bAgregarUnoEDos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/item"
                     android:text="Add 1" />
 
                 <Button
+                    android:layout_marginVertical="15dp"
                     android:id="@+id/bAgregarDosEDos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/item"
                     android:text="Add 2" />
 
                 <Button
                     android:id="@+id/bAgregarTresEDos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/item"
                     android:text="Add 3" />
 
             </LinearLayout>
@@ -119,14 +132,16 @@
         </LinearLayout>
 
 
-
     </LinearLayout>
+
     <Button
-        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
         android:id="@+id/boton_finalizar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Finalizar"/>
+        android:layout_gravity="center"
+        android:background="@color/item"
+        android:text="Finalizar" />
 
 
 </LinearLayout>
